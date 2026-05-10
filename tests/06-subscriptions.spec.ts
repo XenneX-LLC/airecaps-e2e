@@ -18,14 +18,14 @@ test.describe('Subscriptions', () => {
     expect(sub).toHaveProperty('price');
   });
 
-  test('create payment intent for Basic plan', async () => {
+  test('create payment intent for Premium plan', async () => {
     const { token } = readState();
     const ctx = await request.newContext();
-    
-    // Get Basic plan
+
+    // Get Premium plan
     const subsRes = await ctx.get(`${API_URL}/api/subscriptions`);
     const subscriptions = await subsRes.json();
-    const paidPlan = subscriptions.find((s: any) => s.id === 'youtube-premium' || s.id === 'youtube-basic');
+    const paidPlan = subscriptions.find((s: any) => s.id === 'youtube-premium');
     expect(paidPlan).toBeDefined();
     
     // Create payment intent

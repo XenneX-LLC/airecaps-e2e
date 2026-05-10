@@ -11,21 +11,21 @@ test.describe('UI Subscription Flow', () => {
     // Navigate to subscription page
     await page.goto(`${FE_URL}/tabs/subscriptions`);
     await page.waitForLoadState('networkidle');
-    
+
     // Verify plans are displayed
     await expect(page.getByText('Free')).toBeVisible();
-    await expect(page.getByText('Basic')).toBeVisible();
     await expect(page.getByText('Premium')).toBeVisible();
+    await expect(page.getByText('Pro')).toBeVisible();
   });
 
-  test('upgrade to Basic plan with test card', async ({ page }) => {
+  test('upgrade to Premium plan with test card', async ({ page }) => {
     // Navigate to subscription page
     await page.goto(`${FE_URL}/tabs/subscriptions`);
     await page.waitForLoadState('networkidle');
-    
-    // Click upgrade on Basic plan
-    const basicCard = page.locator('[data-testid="plan-youtube-basic"]').or(page.getByText('Basic').locator('..'));
-    await basicCard.getByRole('button', { name: /upgrade|subscribe/i }).click();
+
+    // Click upgrade on Premium plan
+    const premiumCard = page.locator('[data-testid="plan-youtube-premium"]').or(page.getByText('Premium').locator('..'));
+    await premiumCard.getByRole('button', { name: /upgrade|subscribe/i }).click();
     
     // Wait for Stripe payment form
     await page.waitForSelector('iframe[name*="stripe"]', { timeout: 10000 });
