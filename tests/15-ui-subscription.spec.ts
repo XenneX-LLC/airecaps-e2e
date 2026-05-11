@@ -13,9 +13,9 @@ test.describe('UI Subscription Flow', () => {
     await page.waitForLoadState('networkidle');
 
     // Verify plans are displayed
-    await expect(page.getByText('Free')).toBeVisible();
-    await expect(page.getByText('Premium')).toBeVisible();
-    await expect(page.getByText('Pro')).toBeVisible();
+    await expect(page.getByText('Free').first()).toBeVisible();
+    await expect(page.getByText('Premium').first()).toBeVisible();
+    await expect(page.getByText('Pro').first()).toBeVisible();
   });
 
   test('upgrade to Premium plan with test card', async ({ page }) => {
