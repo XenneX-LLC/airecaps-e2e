@@ -8,7 +8,10 @@ import { readState } from './helpers';
  */
 export async function loginUI(page: Page): Promise<void> {
   const state = readState();
+  // Navigate first so localStorage is scoped to the correct origin, then set
+  // the onboarding flag so the post-login guard routes to /tabs/** not /onboarding.
   await page.goto('/login');
+  await page.evaluate(() => localStorage.setItem('onboarding_completed', 'true'));
   await page.waitForSelector('ion-input[formcontrolname="email"]', { timeout: 15000 });
 
   // Click and type email (keyboard.type triggers Angular change detection)

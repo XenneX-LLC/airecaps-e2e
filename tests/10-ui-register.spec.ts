@@ -6,6 +6,7 @@ test.describe('UI - Registration', () => {
     const password = 'TestPass123!';
 
     await page.goto('/registration');
+    await page.evaluate(() => localStorage.setItem('onboarding_completed', 'true'));
     await page.waitForSelector('ion-input[formcontrolname="email"]', { timeout: 15000 });
 
     // Type email (keyboard.type triggers Angular reactive form change detection)
