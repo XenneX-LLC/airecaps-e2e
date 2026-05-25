@@ -29,25 +29,5 @@ export default defineConfig({
         viewport: { width: 1280, height: 800 },
       },
     },
-    {
-      name: 'production-api',
-      testMatch: /0[1-9]-.*\.spec\.ts/,
-      use: {
-        baseURL: 'https://api.airecaps.com',
-        extraHTTPHeaders: { 'Content-Type': 'application/json' },
-      },
-    },
-    {
-      name: 'production-browser',
-      testMatch: /1[0-9]-.*\.spec\.ts/,
-      // Skip tests tagged @staging-only — those use credentials that only exist in the staging DB
-      grepInvert: /@staging-only/,
-      use: {
-        ...devices['Desktop Chrome'],
-        baseURL: 'https://airecaps.com',
-        headless: true,
-        viewport: { width: 1280, height: 800 },
-      },
-    },
   ],
 });

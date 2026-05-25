@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { loginUI } from './ui-helpers';
 
 test.describe('UI - Dashboard (Schedule)', () => {
-  test('dashboard page loads after login @staging-only', async ({ page }) => {
+  test('dashboard page loads after login', async ({ page }) => {
     await loginUI(page);
     await page.goto('/tabs/dashboard');
     await page.waitForSelector('ion-title', { timeout: 15000 });
@@ -10,7 +10,7 @@ test.describe('UI - Dashboard (Schedule)', () => {
     expect(title?.trim()).toContain('Schedule');
   });
 
-  test('shows schedule setup or existing schedule @staging-only', async ({ page }) => {
+  test('shows schedule setup or existing schedule', async ({ page }) => {
     await loginUI(page);
     await page.goto('/tabs/dashboard');
     await page.waitForTimeout(3000); // wait for Angular to settle

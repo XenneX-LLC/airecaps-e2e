@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { FE_URL } from './helpers';
 import { login } from './ui-helpers';
 
-test.describe('UI Subscription Flow @staging-only', () => {
+test.describe('UI Subscription Flow', () => {
   test.beforeEach(async ({ page }) => {
     await login(page);
   });

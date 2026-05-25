@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { loginUI } from './ui-helpers';
 
-test.describe('UI - History (My Summaries) @staging-only', () => {
+test.describe('UI - History (My Summaries)', () => {
   test('history page loads', async ({ page }) => {
     await loginUI(page);
     await page.goto('/tabs/history');
