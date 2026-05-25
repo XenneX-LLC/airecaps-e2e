@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { readState } from './helpers';
 
 test.describe('UI - Login', () => {
-  test('login via UI with test credentials', async ({ page }) => {
+  test('login via UI with test credentials @staging-only', async ({ page }) => {
     const state = readState();
 
     await page.goto('/login');

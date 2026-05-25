@@ -40,6 +40,8 @@ export default defineConfig({
     {
       name: 'production-browser',
       testMatch: /1[0-9]-.*\.spec\.ts/,
+      // Skip tests tagged @staging-only — those use credentials that only exist in the staging DB
+      grepInvert: /@staging-only/,
       use: {
         ...devices['Desktop Chrome'],
         baseURL: 'https://airecaps.com',

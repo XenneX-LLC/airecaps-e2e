@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { loginUI } from './ui-helpers';
 
-test.describe('UI - Summarize Now', () => {
+test.describe('UI - Summarize Now @staging-only', () => {
   test('summarize page loads with video search input', async ({ page }) => {
     await loginUI(page);
     await page.goto('/tabs/summarize');
