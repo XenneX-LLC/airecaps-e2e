@@ -26,9 +26,7 @@ test.describe('UI Subscription Flow', () => {
     const premiumCard = page.locator('ion-card:has(ion-card-title:text-is("Premium"))');
     await premiumCard.locator('ion-button').filter({ hasText: /upgrade/i }).click();
 
-    // Verify payment UI appears (Stripe element or paywall modal)
-    await expect(
-      page.locator('iframe[name*="stripe"]').or(page.locator('app-paywall-modal, ion-modal'))
-    ).toBeVisible({ timeout: 15000 });
+    // Verify Stripe payment sheet opened
+    await expect(page.getByText('Add your payment information')).toBeVisible({ timeout: 15000 });
   });
 });
