@@ -7,10 +7,8 @@ test.describe('UI Subscription Flow', () => {
     await login(page);
   });
 
-  // TODO: Premium/Pro plan cards don't appear in headless CI despite working on staging.airecaps.com.
-  // Needs local debugging with --headed to see what's rendered. Skip until investigated.
-  test.skip('view subscription plans', async ({ page }) => {
-    await page.goto(`${FE_URL}/tabs/subscriptions`);
+  test('view subscription plans', async ({ page }) => {
+    await page.goto(`${FE_URL}/subscriptions`);
 
     // Plan cards load async after page load — wait for all three plan titles
     await expect(page.locator('ion-card-title').filter({ hasText: 'Free' }).first()).toBeVisible({ timeout: 15000 });
@@ -18,8 +16,8 @@ test.describe('UI Subscription Flow', () => {
     await expect(page.locator('ion-card-title').filter({ hasText: 'Pro' }).first()).toBeVisible({ timeout: 15000 });
   });
 
-  test.skip('upgrade button opens payment flow', async ({ page }) => {
-    await page.goto(`${FE_URL}/tabs/subscriptions`);
+  test('upgrade button opens payment flow', async ({ page }) => {
+    await page.goto(`${FE_URL}/subscriptions`);
 
     // Wait for plan cards to load
     await expect(page.locator('ion-card-title').filter({ hasText: 'Premium' }).first()).toBeVisible({ timeout: 15000 });
